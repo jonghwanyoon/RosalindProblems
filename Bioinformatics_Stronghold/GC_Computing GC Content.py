@@ -1,7 +1,7 @@
 #
 # Fasta format으로 주어짐.
 # 가장 높은 GC content를 가진 ID와 GC content(%) 를 반환하면 됨
-
+#
 def GC(fasta):
     from Bio import SeqIO
     parser = SeqIO.parse(fasta, format='fasta')
