@@ -1,5 +1,6 @@
 
 #
+# [BFIL	Base Filtration by Quality]
 # FASTQ 가 주어지면, q 이하인 quality인 read를 trimming 하면 됨.
 #
 
