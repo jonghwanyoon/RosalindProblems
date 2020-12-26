@@ -20,6 +20,3 @@ def DDEG(data_file):
             line = f.readline()
     
     return [sum([len(dic[node]) for node in dic[k]]) for k in range(1,n+1)]
-
-with open('output.tsv', 'w') as w:
-    w.write(' '.join([str(i) for i in DDEG('input.tsv')]))
