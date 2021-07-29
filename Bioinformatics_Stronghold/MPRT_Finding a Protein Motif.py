@@ -1,5 +1,10 @@
-
-
+#
+# N-glycosylation motif 찾기.
+#
+# N{P}[ST]{P} 가 위치한 index 리스트를 return하면 됨 
+# {P} = P를 제외한 아무 Amino acid가 올 수 있음
+# [ST] = S 혹은 T 만 올 수 있음
+#
 
 def MPRT(id_list):
     from urllib import request
@@ -16,30 +21,19 @@ def MPRT(id_list):
         i = 0
         while seq.find('N', i) != -1:
             idx = seq.find('N', i)
-            if idx+3 > len(seq):
+            if idx+3 >= len(seq):
                 break
-            if seq[idx+2] in ['T','S']:
+            if seq[idx+2] in ['T','S'] and seq[idx+1] != 'P' and seq[idx+3]!='P' :
                 ans.append(idx+1)
             i = idx+1
 
         if len(ans) > 0:
             print(prot_id)
             print(' '.join(map(str,ans)))
+    
 
-
-A = """P02748_CO9_HUMAN
-Q90X23
-P05783_K1CR_HUMAN
-P72173
-P07204_TRBM_HUMAN
-P81428_FA10_TROCA
-P02186
-P98119_URT1_DESRO
-P10646_TFPI_HUMAN
-A2A2Y4
-A9QYR8
-O14977
-""".split('\n')
-
-
-MPRT(A)
+# A = """A2Z669
+# B5ZC00
+# P07204_TRBM_HUMAN
+# P20840_SAG1_YEAST""".split('\n')
+# MPRT(A)
