@@ -5,9 +5,6 @@ def BA5E(string):
     seq2 = string[1]
     from Bio import pairwise2
     from Bio.SubsMat import MatrixInfo as matlist
-    # handle = Entrez.efetch(db='nucleotide', id=[ID1, ID2], rettype='fasta')
-    # records = list(SeqIO.parse('input.tsv', format='fasta'))
-    # pairwise2.align.globalms(records[0].seq, records[1].seq, 5, -4, -10, -1)[0][2])
     matrix = matlist.blosum62
     align_dic = {}
     for a in pairwise2.align.globalds(seq1, seq2, matrix, -5, -5):
