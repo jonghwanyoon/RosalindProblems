@@ -55,8 +55,7 @@ def LCSQ(fasta):
 
     A = LCSLength(seq1, seq2)
     LCS = traceback(A, '0' + seq1, '0'+seq2, len(seq1), len(seq2))
-    # LCS_list = tracebackAll(A, '0' + seq1, '0'+seq2, len(seq1), len(seq2))
-    print(LCS)
+    return LCS
 
 
-LCSQ('input.tsv')
+# LCSQ('input.tsv')
