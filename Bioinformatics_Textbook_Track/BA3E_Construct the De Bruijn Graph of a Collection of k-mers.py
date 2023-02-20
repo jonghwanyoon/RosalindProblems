@@ -5,7 +5,7 @@
 #
 
 
-from collections import defaultdict
+from collections import defaultdict, deque
 
 def BA3E(Patterns):
     dic=defaultdict(list)
@@ -30,7 +30,7 @@ class Node:
 
 def BA3E_2(Patterns):
     # Composition Graph
-    pool = []
+    pool = deque()
     for p in Patterns:
         prefix = Node(p[:-1])
         suffix = Node(p[1:])
@@ -39,14 +39,17 @@ def BA3E_2(Patterns):
     
     # Path Graph
     dic = {}
-    for node in pool:
+    n = len(pool)
+    while n > 0:
+        node = pool.popleft()
         prefix = node.value
         if prefix not in dic:
             dic[prefix] = node
         else:
             dic[prefix].extendChilds(node.child)
+        n -= 1
 
     for kmer, node in dic.items():
         prefix = node.value # equal with kmer
         suffix_list = [child.value for child in node.child]
-        print(prefix + " -> " + ",".join(suffix_list) + "\n")
+        print(prefix + " -> " + ",".join(suffix_list))
